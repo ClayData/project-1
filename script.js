@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var cuisineType = "";
     var price = "";
-    var distance = "";
+    var distance = ""
     
 
 
