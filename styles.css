@@ -22,12 +22,13 @@
    margin-left: 90px; 
   } 
 
-.restaurants{ 
+.Distance{ 
   display: default;
-  margin: center;    
+  margin: auto;
+  width: 100%;
  }  
 
- .h1{
+ h1{
     margin: auto;
     text-align: center;
     width: 100%;
