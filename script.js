@@ -19,25 +19,13 @@ $(document).ready(function() {
         }
         
         $.ajax(settings).done(function (tripAdvisoresponse) {
+            $("#waitingText").css("visibility", "hidden");
+            $("button").css("visibility", "visible");
             console.log(tripAdvisoresponse);
 
-        
+            
         });
     }
-    function search_restaurant() { 
-    let input = document.getElementById('searchbar').value 
-    input=input.toLowerCase(); 
-    let x = document.getElementsByClassName('restaurants'); 
-      
-    for (i = 0; i < x.length; i++) {  
-        if (!x[i].innerHTML.toLowerCase().includes(input)) { 
-            x[i].style.display="none"; 
-        } 
-        else { 
-            x[i].style.display="in-line-block";                  
-        } 
-    } 
-}
 
     navigator.geolocation.getCurrentPosition(giveLocation);
 });
