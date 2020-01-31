@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var cuisineType = "";
+    var cuisineType = $("#cuisine-type").val();
     var price = "";
     var distance = "";
     
@@ -24,7 +24,7 @@ $(document).ready(function() {
         
         $.ajax(settings).done(function (tripAdvisoresponse) {
             console.log(tripAdvisoresponse);
-
+            console.log(lat + " " + long)
         
         });
     }
