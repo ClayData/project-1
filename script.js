@@ -7,9 +7,9 @@ $(document).ready(function() {
     var lat;
     var long;
 
-    function giveLocation(responce) {
-        lat = responce.coords.latitude;
-        long = responce.coords.longitude;
+    function giveLocation(geoResponse) {
+        lat = geoResponse.coords.latitude;
+        long = geoResponse.coords.longitude;
 
         var settings = {
             "async": true,
@@ -22,8 +22,8 @@ $(document).ready(function() {
             }
         }
         
-        $.ajax(settings).done(function (response) {
-            console.log(response);
+        $.ajax(settings).done(function (tripAdvisoresponse) {
+            console.log(tripAdvisoresponse);
 
         
         });
