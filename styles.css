@@ -32,4 +32,11 @@
     text-align: center;
     width: 100%;
  }
+
+ button {
+   visibility: hidden;
+ }
  
+ #waitingText {
+   font-size: 18pt;
+ }
