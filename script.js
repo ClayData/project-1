@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-    var cuisineType = "";
-    var price = "";
-    var distance = "";
-    
     var lat;
     var long;
 
