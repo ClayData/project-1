@@ -1,11 +1,10 @@
 $(document).ready(function() {
 
-    var cuisineType = "";
-    var price = "";
-    var distance = "";
-    
     var lat;
     var long;
+
+    var restaurantData;
+    var finalResults = [];
 
     function giveLocation(geoResponse) {
         lat = geoResponse.coords.latitude;
@@ -23,11 +22,13 @@ $(document).ready(function() {
         }
         
         $.ajax(settings).done(function (tripAdvisoresponse) {
-            console.log(tripAdvisoresponse);
+            $("#waitingText").css("visibility", "hidden");
+            $("button").css("visibility", "visible");
 
-        
+            restaurantData = tripAdvisoresponse;
         });
     }
+<<<<<<< HEAD
      
     for (i = 0; i < x.length; i++) {  
         if (!x[i].innerHTML.toLowerCase().includes(input)) { 
@@ -38,6 +39,21 @@ $(document).ready(function() {
         } 
     } 
 }
+=======
+>>>>>>> a95fac5ae786dc2ac961a9350b25531279b301fc
 
     navigator.geolocation.getCurrentPosition(giveLocation);
+
+    $(".button").on("click", filter);
+
+    function filter(){
+            for(var i = 0; i < restaurantData.data.length; i++) {
+                if(restaurantData.data[i].distance != undefined && restaurantData.data[i].name != undefined) {
+                    if(restaurantData.data[i].distance < $(this).attr("data-distance")) {
+                        finalResults.push(restaurantData.data[i]);
+                    }
+                }
+            }
+            console.log(finalResults);
+    }
 });
