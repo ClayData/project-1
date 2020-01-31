@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-    var cuisineType = $("#cuisine-type").val();
-    var price = "";
-    var distance = "";
-    
     var lat;
     var long;
 
@@ -14,7 +10,7 @@ $(document).ready(function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=10&lunit=mi&lang=en_US&latitude="+lat+"&longitude="+long,
+            "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=1&lunit=mi&lang=en_US&latitude="+lat+"&longitude="+long,
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
@@ -28,6 +24,20 @@ $(document).ready(function() {
         
         });
     }
-    
+    function search_restaurant() { 
+    let input = document.getElementById('searchbar').value 
+    input=input.toLowerCase(); 
+    let x = document.getElementsByClassName('restaurants'); 
+      
+    for (i = 0; i < x.length; i++) {  
+        if (!x[i].innerHTML.toLowerCase().includes(input)) { 
+            x[i].style.display="none"; 
+        } 
+        else { 
+            x[i].style.display="in-line-block";                  
+        } 
+    } 
+}
+
     navigator.geolocation.getCurrentPosition(giveLocation);
 });
