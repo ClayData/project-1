@@ -3,6 +3,9 @@ $(document).ready(function() {
     var lat;
     var long;
 
+    var restaurantData;
+    var finalResults = [];
+
     function giveLocation(geoResponse) {
         lat = geoResponse.coords.latitude;
         long = geoResponse.coords.longitude;
@@ -21,11 +24,23 @@ $(document).ready(function() {
         $.ajax(settings).done(function (tripAdvisoresponse) {
             $("#waitingText").css("visibility", "hidden");
             $("button").css("visibility", "visible");
-            console.log(tripAdvisoresponse);
 
-            
+            restaurantData = tripAdvisoresponse;
         });
     }
 
     navigator.geolocation.getCurrentPosition(giveLocation);
+
+    $(".button").on("click", filter);
+
+    function filter(){
+            for(var i = 0; i < restaurantData.data.length; i++) {
+                if(restaurantData.data[i].distance != undefined && restaurantData.data[i].name != undefined) {
+                    if(restaurantData.data[i].distance < $(this).attr("data-distance")) {
+                        finalResults.push(restaurantData.data[i]);
+                    }
+                }
+            }
+            console.log(finalResults);
+    }
 });
