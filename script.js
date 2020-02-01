@@ -1,5 +1,7 @@
 $(document).ready(function() {
-
+    
+$(document).foundation();
+       
     var lat;
     var long;
 
@@ -13,7 +15,7 @@ $(document).ready(function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=10&lunit=mi&lang=en_US&latitude="+lat+"&longitude="+long,
+            "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=1&lunit=mi&lang=en_US&latitude="+lat+"&longitude="+long,
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
