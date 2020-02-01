@@ -4,7 +4,8 @@ $(document).ready(function() {
     var long;
 
     var restaurantData;
-    var finalResults = [];
+    var filteredResults = [];
+    var currentRestaurantIndex = 0;
 
     function giveLocation(geoResponse) {
         lat = geoResponse.coords.latitude;
@@ -29,18 +30,26 @@ $(document).ready(function() {
         });
     }
 
+    function filter(){
+        filteredResults = [];
+        
+        for(var i = 0; i < restaurantData.data.length; i++) {
+            if(restaurantData.data[i].distance != undefined && restaurantData.data[i].name != undefined) {
+                if(restaurantData.data[i].distance < $(this).attr("data-distance")) {
+                    filteredResults.push(restaurantData.data[i]);
+                }
+            }
+        }
+    }
+
+    function goToNext() {
+        var name = filteredResults[currentRestaurantIndex].name;
+        $("#RestaurantName").text(name);
+
+        currentRestaurantIndex++;
+    }
+
     navigator.geolocation.getCurrentPosition(giveLocation);
 
     $(".button").on("click", filter);
-
-    function filter(){
-            for(var i = 0; i < restaurantData.data.length; i++) {
-                if(restaurantData.data[i].distance != undefined && restaurantData.data[i].name != undefined) {
-                    if(restaurantData.data[i].distance < $(this).attr("data-distance")) {
-                        finalResults.push(restaurantData.data[i]);
-                    }
-                }
-            }
-            console.log(finalResults);
-    }
 });
