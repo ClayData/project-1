@@ -1,5 +1,7 @@
 $(document).ready(function() {
-
+    
+$(document).foundation();
+       
     var lat;
     var long;
 
