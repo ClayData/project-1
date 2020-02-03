@@ -2,7 +2,6 @@ $(document).ready(function() {
 
     var lat;
     var long;
-
     var restaurantData;
     var finalResults = [];
 
@@ -22,28 +21,14 @@ $(document).ready(function() {
         }
         
         $.ajax(settings).done(function (tripAdvisoresponse) {
-            $("#waitingText").css("visibility", "hidden");
+            $(".load-wrapper").css("visibility", "hidden");
             $("button").css("visibility", "visible");
 
             restaurantData = tripAdvisoresponse;
         });
     }
-<<<<<<< HEAD
-     
-    for (i = 0; i < x.length; i++) {  
-        if (!x[i].innerHTML.toLowerCase().includes(input)) { 
-            x[i].style.display="none"; 
-        } 
-        else { 
-            x[i].style.display="in-line-block";                  
-        } 
-    } 
-}
-=======
->>>>>>> a95fac5ae786dc2ac961a9350b25531279b301fc
 
     navigator.geolocation.getCurrentPosition(giveLocation);
-
     $(".button").on("click", filter);
 
     function filter(){
@@ -56,4 +41,8 @@ $(document).ready(function() {
             }
             console.log(finalResults);
     }
+    $(window).on("load", function(){
+    $(".loader-wrapper").fadeOut("slow");
+   })
+
 });
