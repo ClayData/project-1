@@ -45,8 +45,6 @@ $(document).foundation();
     }
 
     function buildOrbitSlides() {
-        new Glide('.glide').mount();
-        return
         for(var i = 0; i < filteredResults.length; i++) {
             var element = $("<li>");
             element.attr("class", "glide__slide");
@@ -59,50 +57,6 @@ $(document).foundation();
         }
         new Glide('.glide').mount();
         return
-
-
-        var orbitList = $("<ul>");
-
-        for(var i = 0; i < filteredResults.length; i++) {
-            var newOrbitItem = $("<li>");
-            newOrbitItem.attr("class", "orbit-slide");
-            newOrbitItem.attr("data-slide", JSON.stringify(i));
-            //newOrbitItem.css("max-height", "666px");
-            //newOrbitItem.css("position", "relative");
-            //newOrbitItem.css("display", "none");
-
-            var figure = $("<figure>");
-            figure.attr("class", "orbit-figure");
-
-            var image = $("<img>");
-            image.attr("src", "https://placehold.it/1200x600/888?text=Slide-2");
-            image.attr("class", "orbit-image");
-
-            var imageCaption = $("<figcaption>");
-            imageCaption.attr("class", "orbit-caption");
-            imageCaption.text(i);
-
-            figure.append(image);
-            figure.append(imageCaption);
-
-            var orbitDiv = $("<div>");
-            var header = $("<h3>");
-            header.attr("class", "text-center");
-
-            var par = $("<p>");
-            par.attr("class", "text-center");
-
-            orbitDiv.append(header);
-            orbitDiv.append(par);
-
-            newOrbitItem.append(figure);
-            newOrbitItem.append(orbitDiv);
-
-            orbitList.append(newOrbitItem);
-        }
-        var carousel = new Foundation.Orbit(orbitList);
-
-        $("body").append(carousel);
     }
 
     navigator.geolocation.getCurrentPosition(giveLocation);
