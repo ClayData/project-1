@@ -6,7 +6,7 @@ $(document).foundation();
     var long;
 
     var restaurantData;
-    var finalResults = [];
+    var filteredResults = [];
 
     function giveLocation(geoResponse) {
         lat = geoResponse.coords.latitude;
@@ -31,18 +31,35 @@ $(document).foundation();
         });
     }
 
-    navigator.geolocation.getCurrentPosition(giveLocation);
-
-    $(".button").on("click", filter);
-
     function filter(){
-            for(var i = 0; i < restaurantData.data.length; i++) {
-                if(restaurantData.data[i].distance != undefined && restaurantData.data[i].name != undefined) {
-                    if(restaurantData.data[i].distance < $(this).attr("data-distance")) {
-                        finalResults.push(restaurantData.data[i]);
-                    }
+        filteredResults = [];
+        
+        for(var i = 0; i < restaurantData.data.length; i++) {
+            if(restaurantData.data[i].distance != undefined && restaurantData.data[i].name != undefined) {
+                if(restaurantData.data[i].distance < $(this).attr("data-distance")) {
+                    filteredResults.push(restaurantData.data[i]);
                 }
             }
-            console.log(finalResults);
+        }
+        buildOrbitSlides();
     }
+
+    function buildOrbitSlides() {
+        for(var i = 0; i < filteredResults.length; i++) {
+            var element = $("<li>");
+            element.attr("class", "glide__slide");
+
+            var image = $("<img>");
+            image.attr("src", "https://placehold.it/1200x600/888?text=Slide-2");
+            element.append(image);
+
+            $(".glide__slides").append(element);
+        }
+        new Glide('.glide').mount();
+        return
+    }
+
+    navigator.geolocation.getCurrentPosition(giveLocation);
+
+    $(".distance").on("click", filter);
 });
