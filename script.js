@@ -25,6 +25,7 @@ $(document).foundation();
         $.ajax(settings).done(function (tripAdvisoresponse) {
             $(".load-wrapper").css("visibility", "hidden");
             $("button").css("visibility", "visible");
+            $(".glide__arrow").css("visibility", "hidden");
 
             restaurantData = tripAdvisoresponse;
         });
@@ -32,6 +33,8 @@ $(document).foundation();
 
     function filter(){
         filteredResults = [];
+        $(".glide__slides").empty();
+        $(".glide__arrow").css("visibility", "visible");
         
         for(var i = 0; i < restaurantData.data.length; i++) {
             if(restaurantData.data[i].distance != undefined && restaurantData.data[i].name != undefined) {
