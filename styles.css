@@ -283,3 +283,18 @@
     justify-content: center;
     align-items: center;
  }
+
+ .restaurant-image {
+   float: left;
+ }
+
+ .restaurant-list {
+   float: left;
+   margin-left: 5%;
+ }
+
+ .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
