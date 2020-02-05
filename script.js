@@ -46,11 +46,50 @@ $(document).foundation();
     function buildOrbitSlides() {
         for(var i = 0; i < filteredResults.length; i++) {
             var element = $("<li>");
-            element.attr("class", "glide__slide");
+            var info = $("<ul>");
+            var name = $("<li>");
+            var address = $("<li>");
+            var distance = $("<li>");
+            var isOpen = $("<li>");
 
             var image = $("<img>");
-            image.attr("src", "https://placehold.it/1200x600/888?text=Slide-2");
+
+            info.attr("class", "restaurant-list");
+
+            image.attr("class", "restaurant-image");
+
+            name.text(filteredResults[i].name);
+            address.text("Address: " + filteredResults[i].address);
+            distance.text("Distance: " + filteredResults[i].distance_string);
+
+            if(filteredResults[i].is_closed === false) {
+                isOpen.text("Open");
+            }
+            else {
+                isOpen.text("Closed");
+            }
+
+            element.attr("class", "glide__slide clearfix");
+
+            try {
+                image.attr("src", filteredResults[i].photo.images.large.url);
+                image.attr("width", 700);
+            }
+            catch(error) {
+                image.attr("src", "./noImageHolder.jpg");
+                image.attr("width", 700);
+            }
+
+            name.css("font-size", "30pt");
+            name.css("font-weight", "bold");
+
+            info.append(name);
+            info.append(address);
+            info.append(distance);
+            info.append(isOpen);
+
             element.append(image);
+            element.append(info);
 
             $(".glide__slides").append(element);
         }
