@@ -1,11 +1,12 @@
 $(document).ready(function() {
-
+    
+$(document).foundation();
+       
     var lat;
     var long;
 
     var restaurantData;
     var filteredResults = [];
-    var currentRestaurantIndex = 0;
 
     function giveLocation(geoResponse) {
         lat = geoResponse.coords.latitude;
@@ -14,7 +15,7 @@ $(document).ready(function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=10&lunit=mi&lang=en_US&latitude="+lat+"&longitude="+long,
+            "url": "https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?limit=30&currency=USD&distance=1&lunit=mi&lang=en_US&latitude="+lat+"&longitude="+long,
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
@@ -40,16 +41,71 @@ $(document).ready(function() {
                 }
             }
         }
+        buildOrbitSlides();
     }
 
-    function goToNext() {
-        var name = filteredResults[currentRestaurantIndex].name;
-        $("#RestaurantName").text(name);
+    function buildOrbitSlides() {
+        new Glide('.glide').mount();
+        return
+        for(var i = 0; i < filteredResults.length; i++) {
+            var element = $("<li>");
+            element.attr("class", "glide__slide");
 
-        currentRestaurantIndex++;
+            var image = $("<img>");
+            image.attr("src", "https://placehold.it/1200x600/888?text=Slide-2");
+            element.append(image);
+
+            $(".glide__slides").append(element);
+        }
+        new Glide('.glide').mount();
+        return
+
+
+        var orbitList = $("<ul>");
+
+        for(var i = 0; i < filteredResults.length; i++) {
+            var newOrbitItem = $("<li>");
+            newOrbitItem.attr("class", "orbit-slide");
+            newOrbitItem.attr("data-slide", JSON.stringify(i));
+            //newOrbitItem.css("max-height", "666px");
+            //newOrbitItem.css("position", "relative");
+            //newOrbitItem.css("display", "none");
+
+            var figure = $("<figure>");
+            figure.attr("class", "orbit-figure");
+
+            var image = $("<img>");
+            image.attr("src", "https://placehold.it/1200x600/888?text=Slide-2");
+            image.attr("class", "orbit-image");
+
+            var imageCaption = $("<figcaption>");
+            imageCaption.attr("class", "orbit-caption");
+            imageCaption.text(i);
+
+            figure.append(image);
+            figure.append(imageCaption);
+
+            var orbitDiv = $("<div>");
+            var header = $("<h3>");
+            header.attr("class", "text-center");
+
+            var par = $("<p>");
+            par.attr("class", "text-center");
+
+            orbitDiv.append(header);
+            orbitDiv.append(par);
+
+            newOrbitItem.append(figure);
+            newOrbitItem.append(orbitDiv);
+
+            orbitList.append(newOrbitItem);
+        }
+        var carousel = new Foundation.Orbit(orbitList);
+
+        $("body").append(carousel);
     }
 
     navigator.geolocation.getCurrentPosition(giveLocation);
 
-    $(".button").on("click", filter);
+    $(".distance").on("click", filter);
 });

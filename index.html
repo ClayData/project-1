@@ -5,11 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css"
-        integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg=="
-        crossorigin="anonymous">
-    <script src="script.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/css/foundation.min.css" integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA= sha384-b5S5X654rX3Wo6z5/hnQ4GBmKuIJKMPwrJXn52ypjztlnDK2w9+9hSMBz/asy9Gw sha512-M1VveR2JGzpgWHb0elGqPTltHK3xbvu3Brgjfg4cg5ZNtyyApxw/45yHYsZ/rCVbfoO5MSZxB241wWq642jLtA==" crossorigin="anonymous">
+  
+      <!-- Compressed JavaScript  
+      <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/js/foundation.min.js" integrity="sha256-mRYlCu5EG+ouD07WxLF8v4ZAZYCA6WrmdIXyn1Bv9Vk= sha384-KzKofw4qqetd3kvuQ5AdapWPqV1ZI+CnfyfEwZQgPk8poOLWaabfgJOfmW7uI+AV sha512-0gHfaMkY+Do568TgjJC2iMAV0dQlY4NqbeZ4pr9lVUTXQzKu8qceyd6wg/3Uql9qA2+3X5NHv3IMb05wb387rA==" crossorigin="anonymous"></script>
+      -->
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+       
+      <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/js/foundation.min.js" integrity="sha256-WUKHnLrIrx8dew//IpSEmPN/NT3DGAEmIePQYIEJLLs= sha384-53StQWuVbn6figscdDC3xV00aYCPEz3srBdV/QGSXw3f19og3Tq2wTRe0vJqRTEO sha512-X9O+2f1ty1rzBJOC8AXBnuNUdyJg0m8xMKmbt9I3Vu/UOWmSg5zG+dtnje4wAZrKtkopz/PEDClHZ1LXx5IeOw==" crossorigin="anonymous"></script>
+
+      <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.css">
+
+      <link rel="stylesheet" href="./glide.core.min.css">
+
     <link rel="stylesheet" href="styles.css">
     <title>Restaurant Finder</title>
 
@@ -22,14 +32,44 @@
         <h1>How far are you willing to travel?</h1>
     </div>
     <div>
-        <button class="button restaurants" data-distance="0.5">Up to 0.5 Miles</button>
-        <button class="button restaurants" data-distance="1">Up to 1 Miles</button>
-        <button class="button restaurants" data-distance="2">Up to 2 Miles</button>
-        <button class="button restaurants" data-distance="5">Up to 5 Miles</button>
-        <button class="button restaurants" data-distance="10">Up to 10 Miles</button>
+        <button class="button distance restaurants" data-distance="0.5">Up to 0.5 Miles</button>
+        <button class="button distance restaurants" data-distance="1">Up to 1 Miles</button>
+        <button class="button distance restaurants" data-distance="2">Up to 2 Miles</button>
+        <button class="button distance restaurants" data-distance="5">Up to 5 Miles</button>
+        <button class="button distance restaurants" data-distance="10">Up to 10 Miles</button>
     </div>
 
     <div id="waitingText">Gathering nearby restaurant information...</div>
+
+    <div class="load-wrapper"> 
+
+        <span class="loader"></span><span class="loader-inner"></span></span>
+
+    </div>
+
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <li class="glide__slide">
+                    <img src="https://placehold.it/1200x600/888?text=Slide-2"/>
+                </li>
+                <li class="glide__slide">
+                    <img src="https://placehold.it/1200x600/888?text=Slide-2"/>
+                </li>
+                <li class="glide__slide">
+                    <img src="https://placehold.it/1200x600/888?text=Slide-2"/>
+                </li>
+
+            </ul>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="script.js"></script>
 
 </body>
 
