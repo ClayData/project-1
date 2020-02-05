@@ -1,16 +1,3 @@
-#searchbar{ 
-    margin-left: 15%;
-    margin-top: 5%;
-    padding:15px; 
-    border-radius: 10px; 
-  } 
-
-  input[type=text] { 
-     width: 30%; 
-     -webkit-transition: width 0.15s ease-in-out; 
-     transition: width 0.15s ease-in-out; 
-  } 
-
   /* When the input field gets focus, 
        change its width to 100% */
   input[type=text]:focus { 
@@ -31,9 +18,11 @@
     background-color: rgb(116, 185, 185);
 }
 
-.restaurants{ 
+.restaurants{
+    margin-left: 25%;
   display: default;
   margin: auto;
+  margin-left: 10px;
  }  
 
  .h1{
