@@ -4,7 +4,6 @@ $(document).foundation();
        
     var lat;
     var long;
-
     var restaurantData;
     var filteredResults = [];
 
@@ -24,7 +23,7 @@ $(document).foundation();
         }
         
         $.ajax(settings).done(function (tripAdvisoresponse) {
-            $("#waitingText").css("visibility", "hidden");
+            $(".load-wrapper").css("visibility", "hidden");
             $("button").css("visibility", "visible");
 
             restaurantData = tripAdvisoresponse;
